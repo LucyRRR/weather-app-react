@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
+import WeatherDate from "./WeatherDate.js";
 import Loader from "react-loader-spinner";
 import axios from "axios";
 import './Weather.css';
 
 
 
-export default function WeatherForm() {
+export default function WeatherForm(props) {
   Weather();
-  const [city, setCity] = useState("");
+  const [city, setCity] = useState(props.defaultCity);
   const [result, setResult] = useState(false);
   const [weather, setWeather] = useState({});
 
@@ -17,6 +18,7 @@ export default function WeatherForm() {
       temperature: response.data.main.temp,
       wind: response.data.wind.speed,
       humidity: response.data.main.humidity,
+      date: new Date(response.data.dt * 1000),
       icon: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
       description: response.data.weather[0].description
     });
@@ -47,6 +49,7 @@ export default function WeatherForm() {
       <div>
         {form}
         <ul>
+          <li><WeatherDate date={props.data.date} /> </li>
           <li>Temperature: {Math.round(weather.temperature)}°C</li>
           <li>Description: {weather.description}</li>
           <li>Humidity: {weather.humidity}%</li>

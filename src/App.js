@@ -1,7 +1,7 @@
 import "./index.css";
 import WeatherForm from "./WeatherForm.js";
 import './Weather.css';
-import WeatherDate from "./WeatherDate.js";
+
 
 
 export default function App() {
@@ -9,7 +9,7 @@ export default function App() {
     <div className="App">
       <div className="container">
         <h1>Weather App</h1>
-        <WeatherDate />
+        
         
         <WeatherForm />
         <div className="link-code">
