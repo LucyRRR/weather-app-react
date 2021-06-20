@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
 import WeatherDate from "./WeatherDate.js";
-import Loader from "react-loader-spinner";
 import axios from "axios";
 import './Weather.css';
-
+import WeatherForecast from "./WeatherForecast.js";
 
 
 export default function WeatherForm(props) {
-  Weather();
   const [city, setCity] = useState(props.defaultCity);
-  const [result, setResult] = useState(false);
+  const [result, setResult] = useState({ ready: false });
   const [weather, setWeather] = useState({});
 
   function showTemperature(response) {
@@ -19,7 +17,6 @@ export default function WeatherForm(props) {
       wind: response.data.wind.speed,
       humidity: response.data.main.humidity,
       date: new Date(response.data.dt * 1000),
-      icon: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
       description: response.data.weather[0].description
     });
   }
@@ -42,14 +39,18 @@ export default function WeatherForm(props) {
       <input type="search" placeholder="Enter a city" onChange={updateCity} />
       <input type="submit" value="Search" />
     </form>
-  );
+    );
+    <div><WeatherForecast coordinates={result.coordinates} />
+    </div>
+  
 
   if (result) {
     return (
       <div>
         {form}
         <ul>
-          <li><WeatherDate date={props.data.date} /> </li>
+          <li>
+            <WeatherDate date={props.data.date} /> </li>
           <li>Temperature: {Math.round(weather.temperature)}°C</li>
           <li>Description: {weather.description}</li>
           <li>Humidity: {weather.humidity}%</li>
@@ -65,16 +66,4 @@ export default function WeatherForm(props) {
   }
 }
 
-function Weather(){
-    return(
-        
-        <Loader
-        type="Puff"
-        color="#00BFFF"
-        height={100}
-        width={100}
-        timeout={3000} //3 secs
-      />
-    )
-}
 
