@@ -48,8 +48,7 @@ export default function WeatherForm(props) {
       <div>
         {form}
         <ul>
-          <li>
-            <WeatherDate date={props.data.date} /> </li>
+         
           <li>Temperature: {Math.round(weather.temperature)}°C</li>
           <li>Description: {weather.description}</li>
           <li>Humidity: {weather.humidity}%</li>
