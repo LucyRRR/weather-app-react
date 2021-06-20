@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import WeatherDate from "./WeatherDate.js";
 import axios from "axios";
 import './Weather.css';
-import WeatherForecast from "./WeatherForecast.js";
+
 
 
 export default function WeatherForm(props) {
@@ -40,8 +40,7 @@ export default function WeatherForm(props) {
       <input type="submit" value="Search" />
     </form>
     );
-    <div><WeatherForecast coordinates={result.coordinates} />
-    </div>
+   
   
 
   if (result) {
