@@ -8,23 +8,22 @@ import WeatherForecast from "./WeatherForecast.js";
 
 
 
-export default function WeatherForm() {
+export default function WeatherForm(props) {
   Weather();
   const [city, setCity] = useState("");
   const [result, setResult] = useState(false);
-  const [weather, setWeather] = useState({});
+  const [weather, setWeather] = useState({ ready: false});
 
-  function showTemperature(response) {
-    
-    setResult(true);
+  function handleResponse(response) {
     setWeather({
-      coordinates: response.data.coord,
+      coord: response.data.coord,
       temperature: response.data.main.temp,
       wind: response.data.wind.speed,
       humidity: response.data.main.humidity,
       icon: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
       description: response.data.weather[0].description
     });
+    setResult(true);
   }
 
   function handleSubmit(event) {
@@ -33,7 +32,7 @@ export default function WeatherForm() {
     let apiKey = "9561e0b8516730d7561152d7deb2d27b";
     let units = "metric";
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
-    axios.get(apiUrl).then(showTemperature);
+    axios.get(apiUrl).then(handleResponse);
   }
 
   function updateCity(event) {
@@ -61,7 +60,7 @@ export default function WeatherForm() {
             <img src={weather.icon} alt={weather.description} />
           </li>
         </ul>
-        <WeatherForecast coordinates={weather.coordinates}/>
+        <WeatherForecast coord={weather.coord}/>
       </div>
     );
   } else {

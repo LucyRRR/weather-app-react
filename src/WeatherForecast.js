@@ -4,16 +4,16 @@ import "./WeatherForecast.css";
 import axios from "axios";
 
 export default function WeatherForecast(props) {
-function handleResponse(response) {
-    console.log(response.data);
-}
+    function handleResponse(response) {
+        console.log(response.data);
+    }  
 
-let apiKey = "9561e0b8516730d7561152d7deb2d27b";
-  let longitude = props.coordinates.lon;
-  let latitude = props.coordinates.lat;
-  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
+    let apiKey = "9561e0b8516730d7561152d7deb2d27b";
+    let longitude = props.coord.lon;
+    let latitude = props.coord.lat;
+    let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
 
-  axios.get(apiUrl).then(handleResponse);
+    axios.get(apiUrl).then(handleResponse);
 
     return (
         <div className="WeatherForecast">
@@ -21,7 +21,7 @@ let apiKey = "9561e0b8516730d7561152d7deb2d27b";
                 <div className="col">
                     <div className="WeatherForecas-day"> Thu    
                     </div> 
-                    <WeatherIcon code="02n" size="36"/>
+                    <WeatherIcon code="02n" size={36}/>
                         <div className="Weatherforecast-temps">
                             <span className="WeatherForecast-temps-max">
                     24°
@@ -32,8 +32,6 @@ let apiKey = "9561e0b8516730d7561152d7deb2d27b";
                         </div>
                     </div>
                 </div>
-            </div>
-        
+            </div>   
     )
-    
 };
