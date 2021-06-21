@@ -3,6 +3,7 @@ import Loader from "react-loader-spinner";
 import axios from "axios";
 import './Weather.css';
 import WeatherTemperature from "./WeatherTemperature.js";
+import WeatherForecast from "./WeatherForecast.js";
 
 
 
@@ -59,6 +60,7 @@ export default function WeatherForm() {
             <img src={weather.icon} alt={weather.description} />
           </li>
         </ul>
+        <WeatherForecast />
       </div>
     );
   } else {
