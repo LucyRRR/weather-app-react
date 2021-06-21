@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import Loader from "react-loader-spinner";
 import axios from "axios";
 import './Weather.css';
+import WeatherTemperature from "./WeatherTemperature.js";
+import props from 'prop-types';
 
 
 
@@ -12,6 +14,7 @@ export default function WeatherForm() {
   const [weather, setWeather] = useState({});
 
   function showTemperature(response) {
+    
     setResult(true);
     setWeather({
       temperature: response.data.main.temp,
@@ -46,8 +49,9 @@ export default function WeatherForm() {
     return (
       <div>
         {form}
-        <ul>
-          <li>Temperature: {Math.round(weather.temperature)}°C</li>
+         
+          <ul>
+          <li>Temperature: <WeatherTemperature celsius={weather.temperature} /></li>
           <li>Description: {weather.description}</li>
           <li>Humidity: {weather.humidity}%</li>
           <li>Wind: {weather.wind}km/h</li>
