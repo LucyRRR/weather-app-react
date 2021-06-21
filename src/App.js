@@ -1,7 +1,6 @@
 import "./index.css";
 import WeatherForm from "./WeatherForm.js";
-import './Weather.css';
-
+import './Weather.css'; 
 
 export default function App() {
   return (
