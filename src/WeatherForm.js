@@ -3,7 +3,7 @@ import Loader from "react-loader-spinner";
 import axios from "axios";
 import './Weather.css';
 import WeatherTemperature from "./WeatherTemperature.js";
-import props from 'prop-types';
+
 
 
 
