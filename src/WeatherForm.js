@@ -18,6 +18,7 @@ export default function WeatherForm() {
     
     setResult(true);
     setWeather({
+      coordinates: response.data.coord,
       temperature: response.data.main.temp,
       wind: response.data.wind.speed,
       humidity: response.data.main.humidity,
@@ -60,7 +61,7 @@ export default function WeatherForm() {
             <img src={weather.icon} alt={weather.description} />
           </li>
         </ul>
-        <WeatherForecast />
+        <WeatherForecast coordinates={weather.coordinates}/>
       </div>
     );
   } else {
