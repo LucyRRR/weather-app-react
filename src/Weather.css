@@ -3,9 +3,11 @@
 }
 .App {
     width: 800px;
+    height: 500px;
     margin-left: 200px;
     margin-top: 60px;
     text-align: center;
     background-image: linear-gradient(to right bottom, #93a5cf, #e4efe9);
     border-radius: 10px;
+    font-family: Cerebri Sans;
 }
