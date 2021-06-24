@@ -4,6 +4,7 @@ import axios from "axios";
 import './Weather.css';
 import WeatherTemperature from "./WeatherTemperature.js";
 import WeatherForecast from "./WeatherForecast.js";
+import './WeatherForm.css'; 
 
 
 
@@ -51,7 +52,8 @@ export default function WeatherForm(props) {
       <div>
         {form}
          
-          <ul>
+          <ul className="WeatherList">
+            <br/>
           <li>Temperature: <WeatherTemperature celsius={weather.temperature} /></li>
           <li>Description: {weather.description}</li>
           <li>Humidity: {weather.humidity}%</li>

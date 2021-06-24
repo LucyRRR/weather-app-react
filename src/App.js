@@ -9,7 +9,7 @@ export default function App() {
       <h1>Weather App</h1>
       <WeatherForm />
       <div className="link-code">
-            <br/>
+            <hr/>
         Coded by <b>Lucia Rothova</b> and is open-sourced on
         <a className="Link" href="https://github.com/LucyRRR/weather-app-react"
         target="_blank" rel="noopener noreferrer"> GitHub</a>
